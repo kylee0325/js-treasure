@@ -1,5 +1,5 @@
 {
-  "name": "js-code",
+  "name": "js-treasure",
   "version": "0.0.1",
   "description": "javascript function collections",
   "main": "./dist/index.cjs.js",
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kylee0325/js-code.git"
+    "url": "git+https://github.com/kylee0325/js-treasure.git"
   },
   "keywords": [
     "javascript",
@@ -31,9 +31,9 @@
   "author": "kylee0325",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kylee0325/js-code/issues"
+    "url": "https://github.com/kylee0325/js-treasure/issues"
   },
-  "homepage": "https://kylee0325.github.io/js-code/",
+  "homepage": "https://kylee0325.github.io/js-treasure/",
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "ant-design-vue": "^3.2.11",

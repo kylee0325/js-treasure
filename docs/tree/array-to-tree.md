@@ -5,7 +5,7 @@
 ## 使用
 
 ```js
-import { arrayToTree } from 'js-code'
+import { arrayToTree } from 'js-treasure'
 
 arrayToTree(list, options)
 ```
@@ -33,7 +33,7 @@ arrayToTree(list, options)
 
 ```vue
 <script>
-import { arrayToTree } from 'js-code'
+import { arrayToTree } from 'js-treasure'
 
 export default {
   setup() {

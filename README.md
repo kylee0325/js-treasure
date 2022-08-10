@@ -1,4 +1,4 @@
-# js-code
+# js-treasure
 
 ## 简介
 
@@ -12,13 +12,13 @@
 ## 安装依赖
 
 ```bash
-npm install js-code
+npm install js-treasure
 或
-yarn add js-code
+yarn add js-treasure
 ```
 
 ## 使用
 
 ```jsx
-import { arrayToTree } from 'js-code'
+import { arrayToTree } from 'js-treasure'
 ```

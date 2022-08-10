@@ -1,19 +1,19 @@
 export default {
-  title: 'js-code',
-  base: '/js-code/',
+  title: 'js-treasure',
+  base: '/js-treasure/',
   lang: 'ZH-CN',
   description: 'Collection of JavaScript functions',
   header: [],
   themeConfig: {
-    repo: 'kylee0325/js-code',
-    docsRepo: 'kylee0325/js-code',
+    repo: 'kylee0325/js-treasure',
+    docsRepo: 'kylee0325/js-treasure',
     docsBranch: 'master',
     docsDir: 'docs',
     editLinks: true,
     nav: [
       {
         text: 'ChangeLog',
-        link: 'https://github.com/kylee0325/js-code/blob/master/CHANGELOG.md'
+        link: 'https://github.com/kylee0325/js-treasure/blob/master/CHANGELOG.md'
       }
     ],
     sidebar: {
