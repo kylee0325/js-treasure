@@ -10,7 +10,9 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1"
   },
   "files": [
     "dist"
@@ -31,9 +33,14 @@
   "bugs": {
     "url": "https://github.com/kylee0325/js-code/issues"
   },
-  "homepage": "https://github.com/kylee0325/js-code#readme",
+  "homepage": "https://kylee0325.github.io/js-code/",
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
+    "ant-design-vue": "^3.2.11",
+    "c8": "^7.12.0",
+    "commitizen": "^4.2.5",
+    "conventional-changelog-cli": "^2.2.2",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.21.0",
     "eslint-config-standard": "^17.0.0",
     "husky": "^8.0.1",
@@ -45,7 +52,13 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "typescript": "^4.7.4",
-    "vitepress": "^1.0.0-alpha.4"
+    "vitepress": "^0.20.0",
+    "vitest": "^0.21.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "husky": {
     "hooks": {
@@ -60,5 +73,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "engines": {
+    "node": ">= 14.15.0"
   }
 }

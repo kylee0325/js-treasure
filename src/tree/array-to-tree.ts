@@ -1,32 +1,36 @@
+type ID = string | number | null
 export interface FormatOptions {
   parentKey: string
-  childrenKey: string
   idKey: string
+  rootId: ID
 }
 
-type ID = string | number | null
-
-function getOptions(options: Partial<FormatOptions>): FormatOptions {
-  return Object.assign({ parentKey: 'parent_id', childrenKey: 'children', idKey: 'id' }, options)
+function getOptions(options?: Partial<FormatOptions>): FormatOptions {
+  return Object.assign({ parentKey: 'parent_id', idKey: 'id', rootId: null }, options)
 }
 
-interface IdMap {
-  [key: string]: any
+const cloneDeep = <T>(data: T): T => {
+  return JSON.parse(JSON.stringify(data))
 }
 
-export function arrayToTree<T>(list: T[], rootId: ID = null, options: Partial<FormatOptions>) {
-  const { parentKey, childrenKey, idKey } = getOptions(options)
-  const treeData: T[] = []
-  const idMap: IdMap = {}
+export type FormatResult<T> = T & { children?: FormatResult<T>[] }
 
-  list.forEach((item: any) => {
-    const newItem = JSON.parse(JSON.stringify(item))
+export function arrayToTree<T extends Record<string, any>>(
+  list: T[],
+  options?: Partial<FormatOptions>
+): FormatResult<T>[] {
+  const { parentKey, idKey, rootId } = getOptions(options)
+  const treeData: FormatResult<T>[] = []
+  const idMap: Record<string, any> = {}
+
+  list.forEach((item: T) => {
+    const newItem = cloneDeep(item)
     const id = newItem[idKey]
     const parentId = newItem[parentKey]
 
     idMap[id] = {
       ...newItem,
-      ...(idMap[id] && idMap[id][childrenKey] ? { [childrenKey]: idMap[id][childrenKey] } : null)
+      ...(idMap[id] && idMap[id].children ? { children: idMap[id].children } : null)
     }
 
     const treeItem = idMap[id]
@@ -34,13 +38,13 @@ export function arrayToTree<T>(list: T[], rootId: ID = null, options: Partial<Fo
     if (parentId === rootId) {
       treeData.push(treeItem)
     } else if (idMap[parentId]) {
-      if (idMap[parentId][childrenKey]) {
-        idMap[parentId][childrenKey].push(treeItem)
+      if (idMap[parentId].children) {
+        idMap[parentId].children.push(treeItem)
       } else {
-        idMap[parentId][childrenKey] = [treeItem]
+        idMap[parentId].children = [treeItem]
       }
     } else {
-      idMap[parentId] = { [childrenKey]: [treeItem] }
+      idMap[parentId] = { children: [treeItem] }
     }
   })
 
