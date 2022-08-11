@@ -1,8 +1,3 @@
-interface INode {
-  [key: string]: any
-  nodes?: INode[]
-}
-
 /**
  * 树形数组的遍历
  * @param {*} tree
@@ -10,7 +5,7 @@ interface INode {
  * @param {*} childKey 子项的key name
  * @returns void
  */
-export function traverseTree(tree, func, childKey = 'children') {
+export function traverseTree(tree: Record<string, any>[], func, childKey?: string) {
   if (!tree || !Array.isArray(tree)) {
     return
   }
@@ -23,8 +18,8 @@ export function traverseTree(tree, func, childKey = 'children') {
     if (isDone) {
       return node
     }
-    if (node && node[childKey]) {
-      const childNode = traverseTree(node[childKey], func)
+    if (node && node[childKey || 'children']) {
+      const childNode = traverseTree(node[childKey || 'children'], func)
       if (childNode) return childNode
     }
   }

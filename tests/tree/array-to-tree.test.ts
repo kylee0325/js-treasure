@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { arrayToTree, FormatResult } from './array-to-tree'
+import { arrayToTree, FormatResult } from '../../src'
 
 interface Item {
   parent_id: any
