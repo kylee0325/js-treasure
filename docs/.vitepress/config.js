@@ -21,7 +21,10 @@ export default {
         { text: '概述', link: '/' },
         {
           text: 'Tree结构相关',
-          children: [{ text: 'arrayToTree', link: '/tree/array-to-tree' }]
+          children: [
+            { text: 'arrayToTree', link: '/tree/array-to-tree' },
+            { text: 'traverseTree', link: '/tree/traverse-tree' }
+          ]
         }
       ]
     }
